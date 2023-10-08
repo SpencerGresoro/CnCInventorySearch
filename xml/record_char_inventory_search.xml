@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <root>
-    <windowclass name="charsheet_inventory_contents" merge="join">
+    <windowclass name="charsheet_inventory" merge="join">
         <margins control="0,0,0,2" />
         <script file="scripts/inventory_search.lua"/>
 

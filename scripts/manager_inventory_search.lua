@@ -46,6 +46,8 @@ function onInit()
                         ['staff'] = true
                     };
 
+                    Debug.chat('Magical Check <itemtype>', sType);
+                    Debug.chat('Magical Check <subtype>', sSubType);
                     local bIsMagic = tMagical[sType] or tMagical[sSubType];
                     return bIsMagic;
                 end
@@ -53,78 +55,53 @@ function onInit()
             end
         },
         [5] = {
+            sFilterValue = 'filter_charged',
+            fFilter = function(item)
+                local sType = DB.getValue(item, 'itemtype', ''):lower();
+                return sType == 'charged';
+            end
+        },
+        [6] = {
             sFilterValue = 'filter_id',
             fFilter = function(item)
                 return (LibraryData.getIDState('item', item, true)) == true;
             end
         },
-        [6] = {
+        [7] = {
             sFilterValue = 'filter_not_id',
             fFilter = function(item)
                 return (LibraryData.getIDState('item', item, true)) == false;
             end
         },
-        [7] = {
+        [8] = {
             sFilterValue = 'filter_gear',
             fFilter = function(item)
-
                 -- adventure gear
                 local sType = DB.getValue(item, 'itemtype', ''):lower();
                 local sSubType = DB.getValue(item, 'subtype', ''):lower();
-
                 return sType == 'adventuring gear';
-                -- local tGear = {
-                --     ['equipment packs'] = true,
-                --     ['gear'] = true,
-                --     ['tool'] = true,
-                --     ['clothing'] = true,
-                --     ['cloak'] = true,
-                --     ['container'] = true,
-                --     ['provisions'] = true,
-                --     ['tack and harness'] = true,
-                --     ['herb or spice'] = true
-                -- };
-
-                -- -- check item type or subtype matches any of the criteria for 'adventure gear'
-                -- local bIsGear = tGear[sType] or tGear[sSubType];
-                -- return bIsGear;
-            end
-        },
-        [8] = {
-            sFilterValue = 'filter_goods',
-            fFilter = function(item)
-
-                -- goods, services, provisions ect.
-                local sType = DB.getValue(item, 'itemtype', ''):lower();
-                local sSubType = DB.getValue(item, 'subtype', ''):lower();
-                local tGoodsAndServices = {
-                    ['goods and services'] = true,
-                    ['daily food and lodging'] = true,
-                    ['service'] = true,
-                    ['transport'] = true,
-                    ['animal'] = true,
-                    ['mounts'] = true,
-                    ['vehicles'] = true
-                };
-
-                -- check item type or subtype matches any of the criteria for 'goods and services'
-                local bIsGoods = tGoodsAndServices[sType] or tGoodsAndServices[sSubType];
-                return bIsGoods;
             end
         },
         [9] = {
+            sFilterValue = 'filter_container',
+            fFilter = function(item)
+                local sType = DB.getValue(item, 'itemtype', ''):lower();
+                return sType == 'container';
+            end
+        },
+        [10] = {
             sFilterValue = 'filter_carried',
             fFilter = function(item)
                 return DB.getValue(item, 'carried', '') == 1;
             end
         },
-        [10] = {
+        [11] = {
             sFilterValue = 'filter_equipped',
             fFilter = function(item)
                 return DB.getValue(item, 'carried', '') == 2;
             end
         },
-        [11] = {
+        [12] = {
             sFilterValue = 'filter_not_carried',
             fFilter = function(item)
                 return DB.getValue(item, 'carried', '') == 0;
