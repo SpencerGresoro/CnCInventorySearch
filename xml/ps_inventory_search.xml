@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<root>
+    <windowclass name="ps_inventory" merge="join">
+        <script file="scripts/inventory_search.lua"/>
+        <script file="scripts/manager_ps_loot filtering.lua"/>
+
+        <sheetdata>
+
+            <!-- override party sheet label with blank string since it just doesnt look good with these additional controls and we are out of space -->
+            <label_ps name="label_inv_main">
+                <anchored to="itemlist" position="above" offset="0,22" />
+                <static textres="" />
+                <center />
+            </label_ps>
+
+            <!-- search controls (input and clear button) -->
+            <searchinput name="inv_search_input">
+                <anchored to="itemlist" position="aboveleft" offset="0,25" width="145" height="20"/>
+                <tooltip text="Search inventory by name..." />
+                <tabtarget next="inv_search_input" prev="itemlist"/>
+            </searchinput>
+            <buttoncontrol name="inv_search_clear_btn">
+                <anchored to="inv_search_input" position="right" offset="10,0" relation="relative" width="20"/>
+                <icon normal="button_clear" pressed="button_clear_down"/>
+                <invisible/>
+                <tooltip textres="tooltip_clear"/>
+            </buttoncontrol>
+
+            <!-- filter controls -->
+            <filtercombo name="inv_filter_dropdown">
+                <anchored to="itemlist" position="aboveleft" offset="156,25" width="165" height="20"/>
+                <listdirection>down</listdirection>
+            </filtercombo>
+            
+        </sheetdata>
+    </windowclass>
+</root>
