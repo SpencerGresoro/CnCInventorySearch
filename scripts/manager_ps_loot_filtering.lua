@@ -33,7 +33,7 @@ function buildPartyInventoryWithFiltering()
 
                 -- extract all data from the item db node
                 local sItemDisplayName = ItemManager.getDisplayName(nodeItem, true);
-                local type = DB.getValue(nodeItem, 'type', '');
+                local type = DB.getValue(nodeItem, 'itemtype', '');
                 local subtype = DB.getValue(nodeItem, 'subtype', '');
                 local carried = DB.getValue(nodeItem, 'carried', '');
                 local isidentified = (LibraryData.getIDState('item', nodeItem, true)) == true and 1 or 0;
@@ -78,7 +78,7 @@ function buildPartyInventoryWithFiltering()
         local vGroupItem = DB.createChild('partysheet.inventorylist');
         DB.setValue(vGroupItem, 'name', 'string', sItemName);
         DB.setValue(vGroupItem, 'count', 'number', oItem.count);
-        DB.setValue(vGroupItem, 'type', 'string', oItem.type);
+        DB.setValue(vGroupItem, 'itemtype', 'string', oItem.type);
         DB.setValue(vGroupItem, 'subtype', 'string', oItem.subType);
         DB.setValue(vGroupItem, 'carried', 'number', oItem.carried);
         DB.setValue(vGroupItem, 'isidentified', 'number', oItem.isidentified);
