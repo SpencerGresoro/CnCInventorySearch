@@ -43,12 +43,19 @@ function onInit()
                         ['magic'] = true,
                         ['scroll'] = true,
                         ['potion'] = true,
-                        ['staff'] = true
+                        ['staff'] = true,
+                        ['bonus'] = true,
+                        ['curse'] = true,
+                        ['charge'] = true
                     };
 
-                    -- Debug.chat('Magical Check <itemtype>', sType);
-                    -- Debug.chat('Magical Check <subtype>', sSubType);
-                    local bIsMagic = tMagical[sType] or tMagical[sSubType];
+                    -- check type and subtype for partial match of keywords
+                    local bIsMagic = false;
+                    for key, value in pairs(tMagical) do
+                        if string.find(sType, key) or string.find(sSubType, key) then
+                            bIsMagic = true;
+                        end
+                    end
                     return bIsMagic;
                 end
 
