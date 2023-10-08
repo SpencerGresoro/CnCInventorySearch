@@ -46,8 +46,8 @@ function onInit()
                         ['staff'] = true
                     };
 
-                    Debug.chat('Magical Check <itemtype>', sType);
-                    Debug.chat('Magical Check <subtype>', sSubType);
+                    -- Debug.chat('Magical Check <itemtype>', sType);
+                    -- Debug.chat('Magical Check <subtype>', sSubType);
                     local bIsMagic = tMagical[sType] or tMagical[sSubType];
                     return bIsMagic;
                 end
