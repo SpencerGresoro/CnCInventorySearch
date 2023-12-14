@@ -6,21 +6,18 @@
 
         <sheetdata>
 
-            <!-- override party sheet label with blank string since it just doesnt look good with these additional controls and we are out of space -->
-            <label_ps name="label_inv_main">
-                <anchored to="list" position="above" offset="0,22" />
-                <static textres="" />
-                <center />
-            </label_ps>
+            <area_content_top name="area_controls" insertbefore="list">
+                <anchored height="14" />
+            </area_content_top>
 
             <!-- search controls (input and clear button) -->
             <searchinput name="inv_search_input">
-                <anchored to="list" position="aboveleft" offset="0,10" width="145" height="20"/>
+                <anchored to="area_controls" position="belowleft" offset="0,-20" width="145" height="20"/>
                 <tooltip text="Search inventory by name..." />
                 <tabtarget next="inv_search_input" prev="list"/>
             </searchinput>
             <buttoncontrol name="inv_search_clear_btn">
-                <anchored to="inv_search_input" position="right" offset="10,0" relation="relative" width="20"/>
+                <anchored to="inv_search_input" position="right" offset="10,-20" relation="relative" width="20" height="20"/>
                 <icon normal="button_clear" pressed="button_clear_down"/>
                 <invisible/>
                 <tooltip textres="tooltip_clear"/>
@@ -28,10 +25,10 @@
 
             <!-- filter controls -->
             <filtercombo name="inv_filter_dropdown">
-                <anchored to="list" position="aboveleft" offset="156,10" width="165" height="20"/>
+                <anchored to="area_controls" position="belowleft" offset="156,-20" width="165" height="20"/>
                 <listdirection>down</listdirection>
             </filtercombo>
-            
+
         </sheetdata>
     </windowclass>
 </root>
