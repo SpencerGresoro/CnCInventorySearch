@@ -33,17 +33,17 @@ end
 
 -- apply BOTH search and filter - bootstrapper function which performs the full process
 function applySearchAndFilter()
-    local list = nil;
+    local myList = nil;
 
     -- party sheet inventory
     if bIsPS then
-        list = itemlist;
+        myList = list;
     else -- character sheet inventory
-        list = inventorylist;
+        myList = inventorylist;
     end
 
     -- when filter is raised for a list - this callback will look at each node and apply both the search/filter callbacks defined
-    list.onFilter = function(node)
+    myList.onFilter = function(node)
         local item = node.getDatabaseNode();
         local matchesFilter = fFilter == nil or fFilter(item);
         local matchesSearch = fSearch == nil or fSearch(item);
@@ -53,7 +53,7 @@ function applySearchAndFilter()
     end
 
     -- trigger apply filter for the list (core)
-    list.applyFilter();
+    myList.applyFilter();
 end
 
 -- dropdown - initialize the dropdown filter - create the controls items by reading what options are turned on in settings
